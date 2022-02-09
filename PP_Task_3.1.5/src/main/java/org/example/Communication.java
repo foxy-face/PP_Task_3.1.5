@@ -6,6 +6,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,18 +40,18 @@ public class Communication {
 
     public void saveUser(User user) {
         Long id = user.getId();
-        if (id == null || allUsers.size()<id) {
-            user.setId((long) allUsers.size() + 1);
-            HttpEntity<User> httpEntity = new HttpEntity<>(user, httpHeaders);
-            ResponseEntity<String> responseEntity = restTemplate.exchange(URL, HttpMethod.POST, httpEntity, String.class);
-            System.out.println(responseEntity);
-            System.out.println("User is created");
-        } else {
-            HttpEntity<User> httpEntity = new HttpEntity<>(user, httpHeaders);
-            ResponseEntity<String> responseEntity = restTemplate.exchange(URL, HttpMethod.PUT, httpEntity, String.class);
-            System.out.println(responseEntity);
-            System.out.println("User is updated");
-        }
+        user.setId((long) allUsers.size() + 1);
+        HttpEntity<User> httpEntity = new HttpEntity<>(user, httpHeaders);
+        ResponseEntity<String> responseEntity = restTemplate.exchange(URL, HttpMethod.POST, httpEntity, String.class);
+        System.out.println(responseEntity);
+        System.out.println("User is created");
+    }
+
+    public void updateUser(User user) {
+        HttpEntity<User> httpEntity = new HttpEntity<>(user, httpHeaders);
+        ResponseEntity<String> responseEntity = restTemplate.exchange(URL, HttpMethod.PUT, httpEntity, String.class);
+        System.out.println(responseEntity);
+        System.out.println("User is updated");
     }
 
     public void deleteUser(Long id) {

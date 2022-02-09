@@ -14,7 +14,7 @@ public class App {
 
         communication.saveUser(new User(3L, "James", "Brown", (byte) 24));
 
-        communication.saveUser(new User(3L, "Thomas", "Shelby", (byte) 24));
+        communication.updateUser(new User(3L, "Thomas", "Shelby", (byte) 24));
 
         communication.deleteUser(3L);
 

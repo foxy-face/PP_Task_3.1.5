@@ -15,8 +15,8 @@ public class MyConfig {
         return new RestTemplate();
     }
 
-    @Bean
-    public HttpHeaders httpHeaders() {
-        return new HttpHeaders();
-    }
+//    @Bean
+//    public HttpHeaders httpHeaders() {
+//        return new HttpHeaders();
+//    }
 }
